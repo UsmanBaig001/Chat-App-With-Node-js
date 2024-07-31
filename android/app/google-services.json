@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "854137419939",
+    "project_id": "techat-1",
+    "storage_bucket": "techat-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854137419939:android:8f4c575eb5a65dee372716",
+        "android_client_info": {
+          "package_name": "com.techat_i"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854137419939-o0o5ono4lo35lrpb1ftqgnms0317l0us.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techat_i",
+            "certificate_hash": "bed1f28383824f5a0a0e56e0fe085022abd147d3"
+          }
+        },
+        {
+          "client_id": "854137419939-di3v3f1rfj2t1g786l24nqmrb8ni27o9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk4VFdA0UdiQ4NHluPelNhrvXUcpaj1WM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854137419939-di3v3f1rfj2t1g786l24nqmrb8ni27o9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
