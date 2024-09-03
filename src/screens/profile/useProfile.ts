@@ -62,63 +62,63 @@ const useProfile = ({navigation}: NavigationProps) => {
     try {
       ToastAndroid.show('Updating profile. Please wait...', ToastAndroid.SHORT);
 
-      // const response = await fetch(imageUri);
-      // const blob = await response.blob();
-      // const pathToFile = `images/${user}/profileImage`;
-      // const reference = storage().ref(pathToFile);
-      // const uploadTask = reference.put(blob);
+      const response = await fetch(imageUri);
+      const blob = await response.blob();
+      const pathToFile = `images/${user}/profileImage`;
+      const reference = storage().ref(pathToFile);
+      const uploadTask = reference.put(blob);
 
-      // uploadTask.on(
-      //   'state_changed',
-      //   snapshot => {
-      //     const progress =
-      //       (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      //     ToastAndroid.show(
-      //       `Upload is ${progress.toFixed(2)}% done`,
-      //       ToastAndroid.SHORT,
-      //     );
-      //   },
-      //   error => {
-      //     console.error('Error during upload:', error);
-      //     ToastAndroid.show('Error during upload', ToastAndroid.LONG);
-      //   },
-      //   async () => {
-      //     ToastAndroid.show(
-      //       'Upload completed successfully',
-      //       ToastAndroid.SHORT,
-      //     );
-
-      //     const downloadURL = await uploadTask.snapshot?.ref.getDownloadURL();
-
-      // if (downloadURL) {
-      //   await axios.patch(
-      //     `${PATH}/user`,
-      //     {
-      //       displayName: name,
-      //       email: email,
-      //       status: status,
-      //       photoUrl: downloadURL,
-      //     },
-      //     {
-      //       params: {uid: user},
-      //     },
-      //   );
-      // } else {
-      await axios.patch(
-        `${PATH}/user`,
-        {
-          displayName: name,
-          email: email,
-          status: status,
+      uploadTask.on(
+        'state_changed',
+        snapshot => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          ToastAndroid.show(
+            `Upload is ${progress.toFixed(2)}% done`,
+            ToastAndroid.SHORT,
+          );
         },
-        {
-          params: {uid: user},
+        error => {
+          console.error('Error during upload:', error);
+          ToastAndroid.show('Error during upload', ToastAndroid.LONG);
+        },
+        async () => {
+          ToastAndroid.show(
+            'Upload completed successfully',
+            ToastAndroid.SHORT,
+          );
+
+          const downloadURL = await uploadTask.snapshot?.ref.getDownloadURL();
+
+          if (downloadURL) {
+            await axios.patch(
+              `${PATH}/user`,
+              {
+                displayName: name,
+                email: email,
+                status: status,
+                photoUrl: downloadURL,
+              },
+              {
+                params: {uid: user},
+              },
+            );
+          } else {
+            await axios.patch(
+              `${PATH}/user`,
+              {
+                displayName: name,
+                email: email,
+                status: status,
+              },
+              {
+                params: {uid: user},
+              },
+            );
+          }
+          ToastAndroid.show('User updated successfully', ToastAndroid.SHORT);
         },
       );
-      // }
-      ToastAndroid.show('User updated successfully', ToastAndroid.SHORT);
-      // },
-      // );
       setLoading(false);
     } catch (error) {
       ToastAndroid.show(
